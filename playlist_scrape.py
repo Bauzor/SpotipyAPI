@@ -34,11 +34,10 @@ if token:
     for playlist in paging['items']:
         if selected_PL == playlist['name']:
             chosenPL = sp.user_playlist(playlist['owner']['id'], playlist_id=playlist['id'])
-            print(chosenPL)
 
     with open('%s' % selected_PL, 'w', newline='', encoding='utf-8'):
         fieldnames=[]
 
-        for key in 
+        print(chosenPL['tracks']['items'][0])
 else:
     print("token not authorized")
