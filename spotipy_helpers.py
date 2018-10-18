@@ -11,6 +11,12 @@ Todo:
 
 from collections import Iterable
 
+primitive_and_none = (str, int, bool, float)
+
+def is_prim(thing):
+    return isinstance(thing, primitive_and_none)
+
+
 def flatten(package, string="", product={}):
     """flatten takes in a header row and a key who has a value that is also a dictionary and
     creates new header row titles with the original header row concatenated with the keys of the dictionary that 
@@ -26,7 +32,7 @@ def flatten(package, string="", product={}):
 
         if isinstance(package, dict):
 
-            if isinstance(package[init_key], str):
+            if is_prim(package[init_key]) or package[init_key] == None:
                 product[key] = package[init_key]
                 
             elif isinstance(package[init_key], list):
