@@ -3,7 +3,6 @@ import spotipy
 import spotipy.util as util
 import csv
 from spotipy_helpers import flatten
-import os
 
 if __name__ == '__main__':
     if len(sys.argv) > 3:
