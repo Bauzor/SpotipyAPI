@@ -11,13 +11,17 @@ Todo:
 
 from collections import Iterable
 
+
+test_a = {"a":{"c":"d"},"b":"c"}
+test_b = {"a":"g"}
+
 primitive_and_none = (str, int, bool, float)
 
 def is_prim(thing):
     return isinstance(thing, primitive_and_none)
 
 
-def flatten(package, string="", product={}):
+def flatten(package, string=None, product=None):
     """flatten takes in a header row and a key who has a value that is also a dictionary and
     creates new header row titles with the original header row concatenated with the keys of the dictionary that 
     have values that are also not dictionaries. In the case that there are more dictionaries inside, we perform temp onto
@@ -26,6 +30,11 @@ def flatten(package, string="", product={}):
     key = 'string'
     value = {} or [] or 'string'
     """
+
+    if product == None:
+        product = {}
+    if string == None:
+        string = ""
 
     for init_key in package:
         key = string + init_key
@@ -44,4 +53,8 @@ def flatten(package, string="", product={}):
             elif isinstance(package[init_key], dict):
                 key = key + "-"
                 flatten(package[init_key], key, product)
+
     return product
+
+flatten(test_a) == {'a-c': 'd', 'b': 'c'}
+flatten(test_b,product={}) == {'a': 'g'}

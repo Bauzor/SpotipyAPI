@@ -36,7 +36,7 @@ if token:
         if selected_PL == playlist['name']:
             chosenPL = sp.user_playlist(playlist['owner']['id'], playlist_id=playlist['id'])
 
-    with open('%s.csv' % selected_PL, 'w', newline='', encoding='utf-8') as csvfile:
+    with open('%s.csv' % selected_PL, 'w', newline='', encoding='utf-8-sig') as csvfile:
         fieldnames=[]
         non_local = 0
         while(chosenPL['tracks']['items'][non_local]['is_local']):
